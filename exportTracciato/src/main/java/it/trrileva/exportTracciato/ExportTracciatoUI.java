@@ -102,6 +102,8 @@ public class ExportTracciatoUI extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel3.setText("CODICE DITTA");
+        
+        JLabel lblNewLabel_1 = new JLabel("v 2.0.3");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1Layout.setHorizontalGroup(
@@ -129,6 +131,10 @@ public class ExportTracciatoUI extends javax.swing.JFrame {
         			.addContainerGap(83, Short.MAX_VALUE)
         			.addComponent(ElaboraButton, GroupLayout.PREFERRED_SIZE, 467, GroupLayout.PREFERRED_SIZE)
         			.addGap(88))
+        		.addGroup(jPanel1Layout.createSequentialGroup()
+        			.addContainerGap(583, Short.MAX_VALUE)
+        			.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
         	jPanel1Layout.createParallelGroup(Alignment.LEADING)
@@ -151,7 +157,9 @@ public class ExportTracciatoUI extends javax.swing.JFrame {
         				.addComponent(selezionaFileButton, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
         			.addGap(44)
         			.addComponent(ElaboraButton, GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
-        			.addGap(74))
+        			.addGap(51)
+        			.addComponent(lblNewLabel_1)
+        			.addContainerGap())
         );
         jPanel1.setLayout(jPanel1Layout);
         
@@ -261,7 +269,7 @@ public class ExportTracciatoUI extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify                     
+    // Variables declaration - do not modify//GEN-BEGIN:variables           
     private javax.swing.JButton ElaboraButton;
     private javax.swing.JLabel filePathLabel;
     private javax.swing.JComboBox<String> jComboAnno;
