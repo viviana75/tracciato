@@ -183,6 +183,7 @@ public class GeneraTracciato {
 			if (nominativo.equalsIgnoreCase(riga.nominativo)) {
 				if (riga.task.toLowerCase().contains("Inizio-Fine Contratto".toLowerCase()) ||
 						riga.task.toLowerCase().contains("Recupero".toLowerCase()) ||
+                                                riga.task.toLowerCase().contains("Omessa".toLowerCase()) ||
 						riga.ore == 0d || riga.mese != mese || trovaGiustificativo(riga.task, data)== null) {
 					t = Dipendente.prepara(riga.cognome, riga.nome, riga.cf, riga.matricola, giorni, riga.anno+"", riga.mese+"", ditta);
 					continue;
@@ -197,6 +198,7 @@ public class GeneraTracciato {
 				listaGirono= new ArrayList<Giorno>();
 				if (riga.task.toLowerCase().contains("Inizio-Fine Contratto".toLowerCase()) ||
 						riga.task.toLowerCase().contains("Recupero".toLowerCase()) ||
+						riga.task.toLowerCase().contains("Omessa".toLowerCase()) ||
 						riga.ore == 0d || riga.mese != mese || trovaGiustificativo(riga.task, data)== null) {
 					t = Dipendente.prepara(riga.cognome, riga.nome, riga.cf, riga.matricola, giorni, riga.anno+"", riga.mese+"", ditta);
 					continue;

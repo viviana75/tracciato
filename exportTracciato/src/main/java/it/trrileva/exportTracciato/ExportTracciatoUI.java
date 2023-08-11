@@ -1,22 +1,13 @@
-package it.trrileva.exportTracciato;
-
-import java.awt.Color;
-import java.awt.Font;
-import java.io.File;
-
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.JFileChooser;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.SwingConstants;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package it.trrileva.exportTracciato;
+
+import java.io.File;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,16 +15,23 @@ import javax.swing.SwingConstants;
  */
 public class ExportTracciatoUI extends javax.swing.JFrame {
 
+        private static final long serialVersionUID = 4774079820238077077L;
 
-	private static final long serialVersionUID = 4774079820238077077L;
-	
-	private File selectedFile;
+        private File selectedGiustificativiFile;
+        private File selectedSoggettiFile;
+        private File selectedPresenzeFile;
+        
     /**
-     * Creates new form ExportTracciatoUI
+     * Creates new form ExportTracciatoUInew
      */
     public ExportTracciatoUI() {
-    	setResizable(false);
         initComponents();
+        
+        jLabelGiustificativi.setVisible(false);
+        jLabelPresenze.setVisible(false);
+        jLabelSoggetti.setVisible(false);
+        selezionaFilePresenzeButton.setVisible(false);
+        selezionaFileSoggettiButton.setVisible(false);
     }
 
     /**
@@ -45,47 +43,51 @@ public class ExportTracciatoUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jComboCodiceDitta = new javax.swing.JComboBox<>();
         jComboMese = new javax.swing.JComboBox<>();
-        jComboMese.setToolTipText("");
         jComboAnno = new javax.swing.JComboBox<>();
-        selezionaFileButton = new javax.swing.JButton();
-        filePathLabel = new javax.swing.JLabel();
+        selezionaFileButton1 = new javax.swing.JButton();
+        filePathLabel1 = new javax.swing.JLabel();
         ElaboraButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        
+        jLabel4 = new javax.swing.JLabel();
+        filePathLabel2 = new javax.swing.JLabel();
+        selezionaFileSoggettiButton = new javax.swing.JButton();
+        filePathLabel3 = new javax.swing.JLabel();
+        selezionaFilePresenzeButton = new javax.swing.JButton();
+        jLabelGiustificativi = new javax.swing.JLabel();
+        jLabelSoggetti = new javax.swing.JLabel();
+        jLabelPresenze = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new Color(102, 205, 170));
 
-        jPanel2.setBackground(new Color(102, 205, 170));
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+        jPanel1.setBackground(new java.awt.Color(102, 205, 170));
 
         jComboCodiceDitta.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jComboCodiceDitta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "RC10001", "RC11010", "RC11011", "RC10059", "RC10009" }));
+        jComboCodiceDitta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "RC10001", "RC11010", "RC11011", "RC10059", "RC10009", "RC10036" }));
+        jComboCodiceDitta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboCodiceDittaActionPerformed(evt);
+            }
+        });
 
         jComboMese.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jComboMese.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
 
-
         jComboAnno.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jComboAnno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2023", "2022" }));
+        jComboAnno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2022", "2023", "2024" }));
 
-        selezionaFileButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        selezionaFileButton.setText("Seleziona file");
-        selezionaFileButton.addActionListener(new java.awt.event.ActionListener() {
+        selezionaFileButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        selezionaFileButton1.setText("Seleziona file");
+        selezionaFileButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selezionaFileButtonActionPerformed(evt);
+                selezionaFileButton1ActionPerformed(evt);
             }
         });
 
-        ElaboraButton.setBackground(new Color(102, 205, 170));
+        ElaboraButton.setBackground(new java.awt.Color(102, 102, 255));
         ElaboraButton.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         ElaboraButton.setText("ELABORA");
         ElaboraButton.addActionListener(new java.awt.event.ActionListener() {
@@ -94,137 +96,219 @@ public class ExportTracciatoUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        jLabel1.setText("ANNO");
-
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        jLabel2.setText("MESE");
+        jLabel2.setText("ANNO");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        jLabel3.setText("CODICE DITTA");
+        jLabel3.setText("MESE");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jLabel4.setText("CODICE DITTA");
+
+        selezionaFileSoggettiButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        selezionaFileSoggettiButton.setText("Seleziona file");
+        selezionaFileSoggettiButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selezionaFileSoggettiButtonActionPerformed(evt);
+            }
+        });
+
+        selezionaFilePresenzeButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        selezionaFilePresenzeButton.setText("Seleziona file");
+        selezionaFilePresenzeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selezionaFilePresenzeButtonActionPerformed(evt);
+            }
+        });
+
+        jLabelGiustificativi.setText("GIUSTIFICATIVI");
+
+        jLabelSoggetti.setText("SOGGETTI");
+
+        jLabelPresenze.setText("PRESENZE");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-        	jPanel1Layout.createParallelGroup(Alignment.TRAILING)
-        		.addGroup(jPanel1Layout.createSequentialGroup()
-        			.addGap(35)
-        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
-        				.addGroup(jPanel1Layout.createSequentialGroup()
-        					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addComponent(selezionaFileButton)
-        					.addGap(18)
-        					.addComponent(filePathLabel, GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE))
-        				.addGroup(jPanel1Layout.createSequentialGroup()
-        					.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
-        						.addComponent(jLabel3)
-        						.addComponent(jLabel2)
-        						.addComponent(jLabel1))
-        					.addGap(9)
-        					.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
-        						.addComponent(jComboAnno, 0, 413, Short.MAX_VALUE)
-        						.addComponent(jComboMese, 0, 413, Short.MAX_VALUE)
-        						.addComponent(jComboCodiceDitta, 0, 413, Short.MAX_VALUE))))
-        			.addGap(47))
-        		.addGroup(jPanel1Layout.createSequentialGroup()
-        			.addContainerGap(83, Short.MAX_VALUE)
-        			.addComponent(ElaboraButton, GroupLayout.PREFERRED_SIZE, 467, GroupLayout.PREFERRED_SIZE)
-        			.addGap(88))
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(103, 103, 103)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabelGiustificativi)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabelSoggetti)))
+                    .addComponent(jLabelPresenze, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(selezionaFileSoggettiButton)
+                            .addGap(18, 18, 18)
+                            .addComponent(filePathLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jComboAnno, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboMese, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboCodiceDitta, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(selezionaFileButton1)
+                                .addGap(18, 18, 18)
+                                .addComponent(filePathLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(ElaboraButton, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(selezionaFilePresenzeButton)
+                            .addGap(18, 18, 18)
+                            .addComponent(filePathLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(200, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
-        	jPanel1Layout.createParallelGroup(Alignment.LEADING)
-        		.addGroup(jPanel1Layout.createSequentialGroup()
-        			.addGap(36)
-        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
-        				.addComponent(jComboAnno, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-        				.addComponent(jLabel1))
-        			.addPreferredGap(ComponentPlacement.UNRELATED)
-        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
-        				.addComponent(jComboMese, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-        				.addComponent(jLabel2))
-        			.addGap(18)
-        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
-        				.addComponent(jLabel3)
-        				.addComponent(jComboCodiceDitta, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE))
-        			.addGap(41)
-        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
-        				.addComponent(filePathLabel, GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
-        				.addComponent(selezionaFileButton, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
-        			.addGap(44)
-        			.addComponent(ElaboraButton, GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
-        			.addGap(74))
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jComboAnno, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jComboMese, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jComboCodiceDitta, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(selezionaFileButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(filePathLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelGiustificativi))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(selezionaFileSoggettiButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(filePathLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelSoggetti))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(selezionaFilePresenzeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(filePathLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelPresenze))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addComponent(ElaboraButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50))
         );
-        jPanel1.setLayout(jPanel1Layout);
-        
-        JLabel lblNewLabel = new JLabel("Esporta Tracciato Sequenziale");
-        lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 22));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2Layout.setHorizontalGroup(
-        	jPanel2Layout.createParallelGroup(Alignment.LEADING)
-        		.addGroup(jPanel2Layout.createSequentialGroup()
-        			.addGap(91)
-        			.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        			.addGap(99))
-        		.addGroup(Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-        			.addContainerGap()
-        			.addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE)
-        			.addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-        	jPanel2Layout.createParallelGroup(Alignment.LEADING)
-        		.addGroup(jPanel2Layout.createSequentialGroup()
-        			.addGap(38)
-        			.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-        			.addGap(18)
-        			.addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
-        			.addContainerGap())
-        );
-        jPanel2.setLayout(jPanel2Layout);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-        	layout.createParallelGroup(Alignment.LEADING)
-        		.addGroup(layout.createSequentialGroup()
-        			.addContainerGap()
-        			.addComponent(jPanel2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        			.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-        	layout.createParallelGroup(Alignment.LEADING)
-        		.addGroup(layout.createSequentialGroup()
-        			.addComponent(jPanel2, GroupLayout.PREFERRED_SIZE, 580, GroupLayout.PREFERRED_SIZE)
-        			.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        getContentPane().setLayout(layout);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void selezionaFileButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selezionaFileButton1ActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+
+        int response = fileChooser.showOpenDialog(null);
+
+        if(response == JFileChooser.APPROVE_OPTION) {
+            selectedGiustificativiFile = new File(fileChooser.getSelectedFile().getAbsolutePath());
+            filePathLabel1.setText(selectedGiustificativiFile.getName());
+            System.out.println(selectedGiustificativiFile.getAbsolutePath());
+        }
+    }//GEN-LAST:event_selezionaFileButton1ActionPerformed
+
     private void ElaboraButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ElaboraButtonActionPerformed
-    	try{
+        try{
             if(jComboCodiceDitta.getItemAt(jComboCodiceDitta.getSelectedIndex()).equals("RC10001")){
-                ExportTracciato.execute(jComboMese.getItemAt(jComboMese.getSelectedIndex()), jComboAnno.getItemAt(jComboAnno.getSelectedIndex()), jComboCodiceDitta.getItemAt(jComboCodiceDitta.getSelectedIndex()), selectedFile.getAbsolutePath());
+                ExportTracciato.execute(jComboMese.getItemAt(jComboMese.getSelectedIndex()), jComboAnno.getItemAt(jComboAnno.getSelectedIndex()), jComboCodiceDitta.getItemAt(jComboCodiceDitta.getSelectedIndex()), selectedGiustificativiFile.getAbsolutePath());
+            } else if(jComboCodiceDitta.getItemAt(jComboCodiceDitta.getSelectedIndex()).equals("RC10036")) {
+                ExportTracciato3.execute(jComboMese.getItemAt(jComboMese.getSelectedIndex()), jComboAnno.getItemAt(jComboAnno.getSelectedIndex()), jComboCodiceDitta.getItemAt(jComboCodiceDitta.getSelectedIndex()), 
+                                         selectedGiustificativiFile.getAbsolutePath(), selectedSoggettiFile.getAbsolutePath(), selectedPresenzeFile.getAbsolutePath());
             } else {
-                ExportTracciato2.execute(jComboMese.getItemAt(jComboMese.getSelectedIndex()), jComboAnno.getItemAt(jComboAnno.getSelectedIndex()), jComboCodiceDitta.getItemAt(jComboCodiceDitta.getSelectedIndex()), selectedFile.getAbsolutePath());
+                ExportTracciato2.execute(jComboMese.getItemAt(jComboMese.getSelectedIndex()), jComboAnno.getItemAt(jComboAnno.getSelectedIndex()), jComboCodiceDitta.getItemAt(jComboCodiceDitta.getSelectedIndex()), selectedGiustificativiFile.getAbsolutePath());
             }
             JOptionPane.showMessageDialog(null, "file .seq creato correttamente");
+        } catch(NullPointerException e) {
+            if(selectedGiustificativiFile == null){
+                JOptionPane.showMessageDialog(null, "File Giustificativi non selezionato");
+            } else if (selectedSoggettiFile == null) {
+                JOptionPane.showMessageDialog(null, "File Soggetti non selezionato");
+            } else if (selectedPresenzeFile == null) {
+                JOptionPane.showMessageDialog(null, "File Presenze non selezionato");
+            } else {
+                JOptionPane.showMessageDialog(null, "Errore nella genarazione del file: " + e.getMessage());
+            }
         } catch (Exception e) {
-    		JOptionPane.showMessageDialog(null, "Errore nella genarazione del file: " + e.getMessage());
-		}
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Errore nella genarazione del file: " + e.getMessage());
+        }
     }//GEN-LAST:event_ElaboraButtonActionPerformed
 
-    private void selezionaFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selezionaFileButtonActionPerformed
+    private void selezionaFileSoggettiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selezionaFileSoggettiButtonActionPerformed
         JFileChooser fileChooser = new JFileChooser();
-        
+
         int response = fileChooser.showOpenDialog(null);
-        
+
         if(response == JFileChooser.APPROVE_OPTION) {
-            selectedFile = new File(fileChooser.getSelectedFile().getAbsolutePath());
-            filePathLabel.setText(selectedFile.getName());
-            System.out.println(selectedFile.getAbsolutePath());
+            selectedSoggettiFile = new File(fileChooser.getSelectedFile().getAbsolutePath());
+            filePathLabel2.setText(selectedSoggettiFile.getName());
+            System.out.println(selectedSoggettiFile.getAbsolutePath());
         }
-    }//GEN-LAST:event_selezionaFileButtonActionPerformed
+    }//GEN-LAST:event_selezionaFileSoggettiButtonActionPerformed
+
+    private void selezionaFilePresenzeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selezionaFilePresenzeButtonActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+
+        int response = fileChooser.showOpenDialog(null);
+
+        if(response == JFileChooser.APPROVE_OPTION) {
+            selectedPresenzeFile = new File(fileChooser.getSelectedFile().getAbsolutePath());
+            filePathLabel3.setText(selectedPresenzeFile.getName());
+            System.out.println(selectedPresenzeFile.getAbsolutePath());
+        }
+    }//GEN-LAST:event_selezionaFilePresenzeButtonActionPerformed
+
+    private void jComboCodiceDittaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboCodiceDittaActionPerformed
+        if(jComboCodiceDitta.getItemAt(jComboCodiceDitta.getSelectedIndex()).equals("RC10036")) {
+             jLabelGiustificativi.setVisible(true);
+            jLabelPresenze.setVisible(true);
+            jLabelSoggetti.setVisible(true);
+            selezionaFilePresenzeButton.setVisible(true);
+            selezionaFileSoggettiButton.setVisible(true); 
+            
+            selectedGiustificativiFile = null;
+            selectedPresenzeFile = null;
+            selectedSoggettiFile = null;
+            
+            
+            filePathLabel1.setText("");
+            filePathLabel2.setText("");
+            filePathLabel3.setText("");
+        } else {
+            jLabelGiustificativi.setVisible(false);
+            jLabelPresenze.setVisible(false);
+            jLabelSoggetti.setVisible(false);
+            selezionaFilePresenzeButton.setVisible(false);
+            selezionaFileSoggettiButton.setVisible(false); 
+            
+            selectedGiustificativiFile = null;
+            selectedPresenzeFile = null;
+            selectedSoggettiFile = null;
+            
+            filePathLabel1.setText("");
+            filePathLabel2.setText("");
+            filePathLabel3.setText("");
+        }
+    }//GEN-LAST:event_jComboCodiceDittaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -252,6 +336,7 @@ public class ExportTracciatoUI extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ExportTracciatoUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -261,16 +346,23 @@ public class ExportTracciatoUI extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify                     
+    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ElaboraButton;
-    private javax.swing.JLabel filePathLabel;
+    private javax.swing.JLabel filePathLabel1;
+    private javax.swing.JLabel filePathLabel2;
+    private javax.swing.JLabel filePathLabel3;
     private javax.swing.JComboBox<String> jComboAnno;
     private javax.swing.JComboBox<String> jComboCodiceDitta;
     private javax.swing.JComboBox<String> jComboMese;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabelGiustificativi;
+    private javax.swing.JLabel jLabelPresenze;
+    private javax.swing.JLabel jLabelSoggetti;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JButton selezionaFileButton;
+    private javax.swing.JButton selezionaFileButton1;
+    private javax.swing.JButton selezionaFilePresenzeButton;
+    private javax.swing.JButton selezionaFileSoggettiButton;
+    // End of variables declaration//GEN-END:variables
 }

@@ -12,6 +12,7 @@ public class Riga implements Comparable<Riga> {
 	Integer anno;
 	String task;
 	Double ore;
+        Double minuti;
 
 	public int compareTo(Riga o) {
 		int last = this.nominativo.compareTo(o.nominativo);
