@@ -22,8 +22,8 @@ public class Dipendente {
 		dipendente.mese = Utils.aggiungiZeri(mese, dipendente.lung_mese);
 		dipendente.ditta = ditta;
 		dipendente.dipendete = "?      ";
-		dipendente.cognome = Utils.aggiungiSpazi(cognome, dipendente.lung_cognome);
-		dipendente.nome = Utils.aggiungiSpazi(nome, dipendente.lung_nome);
+		dipendente.cognome = Utils.aggiungiSpazi( Utils.togliLettereAccentate(cognome), dipendente.lung_cognome);
+		dipendente.nome = Utils.aggiungiSpazi( Utils.togliLettereAccentate(nome), dipendente.lung_nome);
 		dipendente.cf = cf; 
 
 		//System.out.println(cognome+ " " + nome+ " " + matricola);
@@ -45,6 +45,7 @@ public class Dipendente {
 			int oreLavorate = 0;
 			int oreLavorateS = 0;
 			int oredip = 0;
+			int oredifferenza = 0;
 			
 			int numGiorni = listaGiorno != null ? listaGiorno.size() : 0;
 			int indice = 0;
@@ -62,7 +63,7 @@ public class Dipendente {
 							oredip = Integer.parseInt(giorno.ore);
 						else 
 							oredip = Integer.parseInt(Utils.getOreDip(cf,ditta));
-						
+
 						switch (giorno.giust) {
 						
 						case OL:
@@ -80,7 +81,7 @@ public class Dipendente {
 							t.ore = giorno.ore;
 							indice++;
 							if (!oreTotDip.equals("00000") && !giorno.ore.equals(oreTotDip)) {
-								try {oreLavorate += Integer.parseInt(giorno.oredif);}catch (Exception e) {}
+								try {oreLavorate = Integer.parseInt(giorno.oredif);}catch (Exception e) {}
 							}
 							break;
 						
@@ -93,18 +94,19 @@ public class Dipendente {
 							
 						case MAL:
 							t.cod = Giustificativi.MAL.getDescBreve();
-							t.ore = giorno.ore;
+							//t.ore = giorno.ore;
+							t.ore = "00000";
 							indice++;
 							
 							break;
 							
-						case MA7:
+						case BRA1:
 
-							t.cod = Giustificativi.MA7.getDescBreve();
+							t.cod = Giustificativi.BRA1.getDescBreve();
 							t.ore = giorno.ore;
 							indice++;
 							if (!oreTotDip.equals("00000") && !giorno.ore.equals(oreTotDip)) {
-								try {oreLavorate += Integer.parseInt(giorno.oredif);}catch (Exception e) {}
+								try {oreLavorate = Integer.parseInt(giorno.oredif);}catch (Exception e) {}
 							}
 							break;
 							
@@ -114,7 +116,7 @@ public class Dipendente {
 							t.ore = giorno.ore;
 							indice++;
 							if (!oreTotDip.equals("00000") && !giorno.ore.equals(oreTotDip)) {
-								try {oreLavorate += Integer.parseInt(giorno.oredif);}catch (Exception e) {}
+								try {oreLavorate = Integer.parseInt(giorno.oredif);}catch (Exception e) {}
 							}
 							break;
 						
@@ -124,7 +126,7 @@ public class Dipendente {
 							t.ore = giorno.ore;
 							indice++;
 							if (!oreTotDip.equals("00000") && !giorno.ore.equals(oreTotDip)) {
-								try {oreLavorate += Integer.parseInt(giorno.oredif);}catch (Exception e) {}
+								try {oreLavorate = Integer.parseInt(giorno.oredif);}catch (Exception e) {}
 							}
 							break;
 							
@@ -134,7 +136,7 @@ public class Dipendente {
 							t.ore = giorno.ore;
 							indice++;
 							if (!oreTotDip.equals("00000") && !giorno.ore.equals(oreTotDip)) {
-								try {oreLavorate += Integer.parseInt(giorno.oredif);}catch (Exception e) {}
+								try {oreLavorate = Integer.parseInt(giorno.oredif);}catch (Exception e) {}
 							}
 							break;
 						
@@ -144,7 +146,7 @@ public class Dipendente {
 							t.ore = giorno.ore;
 							indice++;
 							if (!oreTotDip.equals("00000") && !giorno.ore.equals(oreTotDip)) {
-								try {oreLavorate += Integer.parseInt(giorno.oredif);}catch (Exception e) {}
+								try {oreLavorate = Integer.parseInt(giorno.oredif);}catch (Exception e) {}
 							}
 							break;	
 							
@@ -154,7 +156,7 @@ public class Dipendente {
 							t.ore = giorno.ore;
 							indice++;
 							if (!oreTotDip.equals("00000") && !giorno.ore.equals(oreTotDip)) {
-								try {oreLavorate += Integer.parseInt(giorno.oredif);}catch (Exception e) {}
+								try {oreLavorate = Integer.parseInt(giorno.oredif);}catch (Exception e) {}
 							}
 							break;
 						
@@ -207,7 +209,7 @@ public class Dipendente {
 							t.ore = giorno.ore;
 							indice++;
 							if (!oreTotDip.equals("00000") && !giorno.ore.equals(oreTotDip)) {
-								try {oreLavorate += Integer.parseInt(giorno.oredif);}catch (Exception e) {}
+								try {oreLavorate = Integer.parseInt(giorno.oredif);}catch (Exception e) {}
 							}
 							break;
 							
@@ -217,7 +219,7 @@ public class Dipendente {
 							t.ore = giorno.ore;
 							indice++;
 							if (!oreTotDip.equals("00000") && !giorno.ore.equals(oreTotDip)) {
-								try {oreLavorate += Integer.parseInt(giorno.oredif);}catch (Exception e) {}
+								try {oreLavorate = Integer.parseInt(giorno.oredif);}catch (Exception e) {}
 							}
 							break;							
 						}
@@ -288,7 +290,7 @@ public class Dipendente {
 			String _oreLavorate = (oredip + straordinari) >= 1000 ? ""+(oredip + straordinari) : "0" + (oredip + straordinari) ;
 			switch (ditta) {
 				case "RC10001":
-					giu.oreTeoriche = Utils.isLavorativo(i + "/"+mese+"/"+anno) ? _oreLavorate: straordinari == 0 ? "0000" : straordinari >=1000 ? ""+straordinari: "0"+(straordinari);
+					giu.oreTeoriche = Utils.isLavorativo(i + "/"+mese+"/"+anno) ? _oreLavorate: straordinari == 0 ? "0000" : "0000";//straordinari >=1000 ? ""+straordinari: "0"+(straordinari);
 					break;
 				default:
 					giu.oreTeoriche = oredip == 0 ? "0000" : _oreLavorate;

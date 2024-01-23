@@ -260,6 +260,10 @@ public class GeneraTracciato {
 		
 		int oretotali = Integer.parseInt( Utils.getOreDip(riga.cf, ditta) );
 		
+		for (Giorno _giorno : listaGirono) {
+			oretotali -= Integer.parseInt( _giorno.oredif);
+		}
+		
 		giorno.oredif 	= "00" + ((int)(oretotali - (riga.ore * 100)));
 		listaGirono.add(giorno);
 		giorni.put(riga.giorno, listaGirono);
@@ -290,7 +294,7 @@ public class GeneraTracciato {
 		if (task.trim().toLowerCase().contains("Malattia".toLowerCase()))
 			return Giustificativi.MAL;
 		if (task.trim().toLowerCase().contains("Permessi Handicap l. 104/92".toLowerCase()))
-			return Giustificativi.MA7;
+			return Giustificativi.BRA1;
 		if (task.trim().toLowerCase().contains("Ferie".toLowerCase()))
 			return Giustificativi.FER6;
 		if (task.trim().toLowerCase().contains("Permesso".toLowerCase()))

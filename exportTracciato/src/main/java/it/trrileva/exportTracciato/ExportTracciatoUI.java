@@ -75,7 +75,8 @@ public class ExportTracciatoUI extends javax.swing.JFrame {
 
 
         jComboAnno.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jComboAnno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2023", "2022" }));
+        jComboAnno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2026", "2025", "2024", "2023", "2022" }));
+        jComboAnno.setSelectedItem("2024");
 
         selezionaFileButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         selezionaFileButton.setText("Seleziona file");
@@ -103,7 +104,7 @@ public class ExportTracciatoUI extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel3.setText("CODICE DITTA");
         
-        JLabel lblNewLabel_1 = new JLabel("v 2.0.3");
+        JLabel lblNewLabel_1 = new JLabel("v 2.0.4");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1Layout.setHorizontalGroup(

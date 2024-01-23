@@ -7,6 +7,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import org.apache.commons.lang3.StringUtils;
+
 import it.trrileva.exportTracciato.Easter.YearOutOfRangeException;
 
 public class Utils {
@@ -196,6 +198,11 @@ public class Utils {
 
 		return "FER";
 
+	}
+	
+	public static String togliLettereAccentate(String str) {
+		
+		return StringUtils.replaceChars(str, "àèéìòù", "aeeiou");
 	}
 
 	public static String aggiungiSpazi(String str, int size) {
